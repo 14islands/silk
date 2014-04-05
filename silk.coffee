@@ -28,5 +28,13 @@ class Silk
 	onPageScroll: =>
 		unless @pause 
 			@scrollY = Math.max(@$el.scrollTop(), 0) 
-			window.requestAnimFrame(@onScrollFrame) unless @ticking
+			@requestAnimFrame()(@onScrollFrame) unless @ticking
 			@ticking = true
+
+	requestAnimFrame: ->
+		window.requestAnimationFrame ||=
+		window.webkitRequestAnimationFrame ||=
+		window.mozRequestAnimationFrame ||=
+		(callback) => window.setTimeout(callback, 1000 / 60)
+
+window.Silk = Silk

@@ -23,10 +23,7 @@ module.exports = function (grunt) {
         coffee: {
             compile: {
                 files: {
-                    'silk.js': [
-                        'raf.coffee',
-                        'silk.coffee'
-                    ] 
+                    'silk.js': 'silk.coffee'
                 }
             }
         },

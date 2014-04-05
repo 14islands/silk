@@ -1,6 +1,6 @@
 # Silk
 
-Small library that provides the base for silk smooth scrolling.
+Small library to provide silk smooth scrolling.
 
 Based on [Leaner, Meaner, Faster Animations with requestAnimationFrame](http://www.html5rocks.com/en/tutorials/speed/scrolling/) article by [@aerotwist](https://twitter.com/aerotwist). 
 

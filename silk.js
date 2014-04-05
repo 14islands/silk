@@ -1,15 +1,4 @@
 (function() {
-  window.requestAnimFrame((function(_this) {
-    return function() {
-      return window.requestAnimationFrame || (window.requestAnimationFrame = window.webkitRequestAnimationFrame || (window.webkitRequestAnimationFrame = window.mozRequestAnimationFrame || (window.mozRequestAnimationFrame = function(callback) {
-        return window.setTimeout(callback, 1000 / 60);
-      })));
-    };
-  })(this));
-
-}).call(this);
-
-(function() {
   var Silk,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
@@ -52,14 +41,24 @@
       if (!this.pause) {
         this.scrollY = Math.max(this.$el.scrollTop(), 0);
         if (!this.ticking) {
-          window.requestAnimFrame(this.onScrollFrame);
+          this.requestAnimFrame()(this.onScrollFrame);
         }
         return this.ticking = true;
       }
     };
 
+    Silk.prototype.requestAnimFrame = function() {
+      return window.requestAnimationFrame || (window.requestAnimationFrame = window.webkitRequestAnimationFrame || (window.webkitRequestAnimationFrame = window.mozRequestAnimationFrame || (window.mozRequestAnimationFrame = (function(_this) {
+        return function(callback) {
+          return window.setTimeout(callback, 1000 / 60);
+        };
+      })(this))));
+    };
+
     return Silk;
 
   })();
+
+  window.Silk = Silk;
 
 }).call(this);
